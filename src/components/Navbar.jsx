@@ -41,6 +41,7 @@ const Navbar = () => {
       updateIsSidebar(true);
     } else {
       updateIsMenuCollapsed(true);
+      updateIsSidebar(false);
     }
   };
 
@@ -81,7 +82,7 @@ const Navbar = () => {
             onFocus={handleFocus}
             onBlur={handleBlur}
             placeholder="Search"
-            className={`bg-black w-[45%]  h-10  outline-0 text-lg ps-3
+            className={`bg-black w-[45%]  h-10  outline-0 text-md font-light ps-3
           ${
             isActive
               ? "border-[2.5px] border-solid border-cyan-600 border-s-0"
