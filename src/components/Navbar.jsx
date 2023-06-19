@@ -41,7 +41,9 @@ const Navbar = () => {
       updateIsSidebar(true);
     } else {
       updateIsMenuCollapsed(true);
-      updateIsSidebar(false);
+      if (isMobile) {
+        updateIsSidebar(false);
+      }
     }
   };
 
