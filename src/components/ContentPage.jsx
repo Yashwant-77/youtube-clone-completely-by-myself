@@ -37,7 +37,7 @@ const ContentPage = () => {
           thumbnails,
           viewCountText,
           publishedTimeText,
-          videoId,
+          channelId,
         } = element.video;
 
         return (
@@ -48,6 +48,7 @@ const ContentPage = () => {
             channelName={channelName}
             views={viewCountText}
             timestamp={publishedTimeText}
+            channelNameId={channelId}
           />
         );
       })}

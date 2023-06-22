@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Avatar } from "@mui/material";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { MyContext } from "../context/MyContextProvider";
 
-function ContentCard({ thumbnail, videoTitle, channelName, views, timestamp }) {
-  // const videoTitle = "This is my video which I made with love please give your love too to this video !";
-  // const channelName = "JavaScript Mastery";
-  // const views = "34k";
-  // const timestamp = "2 days ago";
+function ContentCard({
+  channelNameId,
+  thumbnail,
+  videoTitle,
+  channelName,
+  views,
+  timestamp,
+}) {
+  const { updateChannelId } = useContext(MyContext);
 
   return (
-    <div className="m-2 max-w-[300px]">
+    <div className="m-2 max-w-[300px] cursor-pointer">
       <img
         // src="https://i.ytimg.com/vi/OjIxscGV-Qg/maxresdefault.jpg"
         src={thumbnail}
@@ -23,8 +30,12 @@ function ContentCard({ thumbnail, videoTitle, channelName, views, timestamp }) {
               ? videoTitle.slice(0, 30) + "..."
               : videoTitle}{" "}
           </h2>
-          <p className="text-sm text-[#606060]">
-            {channelName} {}
+          <p
+            className="text-sm text-[#606060] hover:text-white"
+            onClick={updateChannelId(channelNameId)}
+          >
+            <Link to="/channelInfo">{channelName}</Link>
+            <CheckCircleIcon className="verifiedIcon" />
           </p>
           <p className="text-sm text-[#606060]">
             {views} . {timestamp}

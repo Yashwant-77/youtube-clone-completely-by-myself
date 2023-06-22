@@ -10,6 +10,8 @@ const MyContextProvider = ({ children }) => {
     window.innerWidth <= 1200 ? true : false
   );
 
+  const [channelId, setChannelId] = useState();
+
   const [isSidebar, setIsSidebar] = useState(
     isMenuCollapsed && isMobile ? false : true
   );
@@ -22,6 +24,10 @@ const MyContextProvider = ({ children }) => {
 
   const updateIsSidebar = (newValue) => {
     setIsSidebar(newValue);
+  };
+
+  const updateChannelId = (newValue) => {
+    setChannelId(newValue);
   };
 
   const updateIsMenuCollapsed = (newValue) => {
@@ -37,6 +43,8 @@ const MyContextProvider = ({ children }) => {
     isMenuCollapsed,
     isNavbar,
     isSidebar,
+    channelId,
+    updateChannelId,
     updateIsSidebar,
     updateIsMobile,
     updateIsMenuCollapsed,

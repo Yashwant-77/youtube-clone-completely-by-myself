@@ -30,10 +30,11 @@ const Shorts = () => {
   return (
     <div className="flex w-[100%] h-[91.5vh] relative top-20 bg-black text-white">
       {isSidebar && <Sidebar />}
-      {myShortsData.map((element, index) => {
+      <h1 className="">This is my Shorts page</h1>
+      {/* {myShortsData.map((element, index) => {
         const { url } = element;
         return <Short key={index} />;
-      })}
+      })} */}
     </div>
   );
 };

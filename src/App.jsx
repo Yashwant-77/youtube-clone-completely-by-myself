@@ -10,6 +10,7 @@ import Library from "./components/Library";
 import History from "./components/History";
 import YourVideos from "./components/YourVideos";
 import WatchLater from "./components/WatchLater";
+import ChannelInfo from "./components/ChannelInfo";
 
 const App = () => {
   const {
@@ -59,6 +60,7 @@ const App = () => {
           <Route exact path="/history" element={<History />} />
           <Route exact path="/your-videos" element={<YourVideos />} />
           <Route exact path="/watch-later" element={<WatchLater />} />
+          <Route exact path="/channelInfo" element={<ChannelInfo />} />
         </Routes>
       </div>
     </BrowserRouter>
