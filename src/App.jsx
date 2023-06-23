@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import SearchNav from "./components/SearchNav";
@@ -17,6 +17,7 @@ const App = () => {
     isMenuCollapsed,
     updateIsMenuCollapsed,
     isMobile,
+    // updateInputValue,
     updateIsMobile,
     updateIsSidebar,
     isNavbar,
@@ -26,25 +27,32 @@ const App = () => {
   window.addEventListener("resize", () => {
     if (window.innerWidth <= 1200 && !isMenuCollapsed) {
       updateIsMenuCollapsed(true);
+      // console.log("Menu collapsed");
     }
     if (window.innerWidth >= 1200 && isMenuCollapsed) {
       updateIsMenuCollapsed(false);
+      // console.log("Menu opened");
     }
     if (window.innerWidth <= 480 && !isMobile) {
       updateIsMobile(true);
+      // console.log("This is a mobile");
       if (isMenuCollapsed) {
         updateIsSidebar(false);
+        // console.log("Sidebar is now hidden");
       }
     }
     if (window.innerWidth >= 480 && isMobile) {
       updateIsMobile(false);
       updateIsSidebar(true);
+      // console.log("This is not a mobile and Sidebar is now visible");
     }
     if (window.innerWidth <= 300 && isNavbar) {
       updateIsNavbar(false);
+      // console.log("Navbar is Changed");
     }
     if (window.innerWidth > 300 && !isNavbar) {
       updateIsNavbar(true);
+      // console.log("Navbar is changed");
     }
   });
 

@@ -32,7 +32,7 @@ function ContentCard({
           </h2>
           <p
             className="text-sm text-[#606060] hover:text-white"
-            onClick={updateChannelId(channelNameId)}
+            onClick={() => updateChannelId(channelNameId)}
           >
             <Link to="/channelInfo">{channelName}</Link>
             <CheckCircleIcon className="verifiedIcon" />

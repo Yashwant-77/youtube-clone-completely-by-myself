@@ -3,6 +3,8 @@ import { createContext, useState } from "react";
 export const MyContext = createContext();
 
 const MyContextProvider = ({ children }) => {
+  // All states are declared here
+
   const [isMobile, setIsMobile] = useState(
     window.innerWidth <= 640 ? true : false
   );
@@ -16,7 +18,15 @@ const MyContextProvider = ({ children }) => {
     isMenuCollapsed && isMobile ? false : true
   );
 
+  const [inputValue, setInputValue] = useState();
+
   const [isNavbar, setIsNavbar] = useState(true);
+
+  // All states handling functions are declared here
+
+  const updateInputValue = (newValue) => {
+    setInputValue(newValue);
+  };
 
   const updateIsMobile = (newValue) => {
     setIsMobile(newValue);
@@ -38,12 +48,16 @@ const MyContextProvider = ({ children }) => {
     setIsNavbar(newValue);
   };
 
+  // contextValue is the object that we passing in provider
+
   const contextValue = {
     isMobile,
     isMenuCollapsed,
     isNavbar,
     isSidebar,
     channelId,
+    inputValue,
+    updateInputValue,
     updateChannelId,
     updateIsSidebar,
     updateIsMobile,

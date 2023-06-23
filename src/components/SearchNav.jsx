@@ -4,14 +4,23 @@ import MicIcon from "@mui/icons-material/Mic";
 import { MyContext } from "../context/MyContextProvider";
 
 const SearchNav = () => {
-  const { updateIsNavbar } = useContext(MyContext);
+  const { updateIsNavbar, updateInputValue } = useContext(MyContext);
 
   const toggleNavbar = () => {
     updateIsNavbar(true);
+    updateInputValue("");
+    console.log("Navbar is now changed");
   };
 
   const handleClick = (e) => {
     e.preventDefault();
+  };
+
+  const handleEnterClick = (e) => {
+    if (e.key === "Enter") {
+      updateInputValue(e.target.value);
+      console.log(" input is now changed");
+    }
   };
 
   return (
@@ -21,6 +30,7 @@ const SearchNav = () => {
       </div>
 
       <input
+        onKeyDown={handleEnterClick}
         onClick={handleClick}
         type="text"
         placeholder="Search YouTube"

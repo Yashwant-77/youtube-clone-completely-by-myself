@@ -22,6 +22,7 @@ const ContentPage = () => {
         // Handle the response data
         console.log(response.data);
         setMyData(response.data.contents);
+        console.log("data is now in mydata");
       })
       .catch((error) => {
         // Handle the error

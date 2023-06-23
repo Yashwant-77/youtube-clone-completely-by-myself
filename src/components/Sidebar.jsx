@@ -31,7 +31,7 @@ const Sidebar = () => {
       }]  shrink-0 grow-0 overflow-y-auto overflow-x-hidden overscroll-contain z-50 `}
     >
       <Link to="/">
-        <SidebarRow icon={<HomeIcon />} titleName="Home" />
+        <SidebarRow icon={<HomeIcon />} titleName="Home" isHome={true} />
       </Link>
       <Link to="/shorts">
         <SidebarRow icon={<DownloadIcon />} titleName="Shorts" />

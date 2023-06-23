@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { MyContext } from "../context/MyContextProvider";
 
-const SidebarRow = ({ cursor, icon, titleName, avatar }) => {
-  const { isMenuCollapsed } = useContext(MyContext);
+const SidebarRow = ({ isHome, cursor, icon, titleName, avatar }) => {
+  const { isMenuCollapsed, updateInputValue } = useContext(MyContext);
 
   return (
     <div
       className={`flex  items-center p-2 ${
         !isMenuCollapsed ? "mx-3" : "py-5 "
       } flex-1 hover:bg-[#303030]  rounded-lg ${cursor} hover:scroll-visible`}
+      onClick={() => updateInputValue("")}
     >
       <div
         className={

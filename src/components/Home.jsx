@@ -1,15 +1,20 @@
 import Sidebar from "./Sidebar";
 import MainPage from "./MainPage";
-import { useContext } from "react";
+import SearchPage from "./SearchPage";
+import { useContext, useEffect } from "react";
 import { MyContext } from "../context/MyContextProvider";
 
 const Home = () => {
-  const { isSidebar } = useContext(MyContext);
+  const { isSidebar, inputValue, updateInputValue } = useContext(MyContext);
+
+  // useEffect(() => {
+  //   updateInputValue("");
+  // }, []);
 
   return (
     <div className="flex w-[100%] h-[91.5vh] relative top-20 bg-black text-white">
       {isSidebar && <Sidebar />}
-      <MainPage />
+      {inputValue === "" ? <MainPage /> : <SearchPage />}
     </div>
   );
 };

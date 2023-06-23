@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
@@ -15,34 +15,56 @@ const Navbar = () => {
     isMenuCollapsed,
     isMobile,
     // isNavbar,
+    inputValue,
+    updateInputValue,
     updateIsSidebar,
     updateIsNavbar,
     updateIsMenuCollapsed,
   } = useContext(MyContext);
 
+  const inputRef = useRef();
+
   const toggleNavbar = () => {
     updateIsNavbar(false);
+    console.log("Navbar is Changed");
   };
 
   const handleFocus = () => {
     if (!isActive) {
       setIsActive(true);
+      console.log("Input is now Active");
     }
   };
   const handleBlur = () => {
     if (isActive) {
       setIsActive(false);
+      console.log("Input is now non active");
     }
+  };
+
+  const handleEnter = (e) => {
+    if (e.key === "Enter") {
+      handleSearchButton();
+    }
+  };
+
+  const handleSearchButton = () => {
+    console.log(inputValue);
+    updateInputValue(inputRef.current.value);
+    console.log("inputvalue is now in inputvalue");
   };
 
   const handleMenuIconClick = () => {
     if (isMenuCollapsed) {
       updateIsMenuCollapsed(false);
       updateIsSidebar(true);
+      console.log("Menu is opened and sidebar is visible");
     } else {
       updateIsMenuCollapsed(true);
+      console.log("Menu is now collapsed");
       if (isMobile) {
         updateIsSidebar(false);
+        console.log("Sidebar is now hidden");
       }
     }
   };
@@ -56,7 +78,12 @@ const Navbar = () => {
         />
         <div className="flex  justify-center items-center">
           <Link to="/">
-            <img src={logo} alt="" className=" bg-black w-32 h-auto" />
+            <img
+              src={logo}
+              alt=""
+              className=" bg-black w-32 h-auto"
+              onClick={() => updateInputValue("")}
+            />
           </Link>
         </div>
       </div>
@@ -80,6 +107,8 @@ const Navbar = () => {
             )}
           </div>
           <input
+            onKeyDown={handleEnter}
+            ref={inputRef}
             type="text"
             onFocus={handleFocus}
             onBlur={handleBlur}
@@ -91,7 +120,10 @@ const Navbar = () => {
               : "rounded-l-full border-[0.5px] border-gray-600"
           }`}
           />
-          <button className="search-button-style p-1.5 px-4">
+          <button
+            className="search-button-style p-1.5 px-4"
+            onClick={handleSearchButton}
+          >
             <SearchIcon
               sx={{ width: "30px !important", height: "auto !important" }}
             />
