@@ -18,11 +18,17 @@ const MyContextProvider = ({ children }) => {
     isMenuCollapsed && isMobile ? false : true
   );
 
-  const [inputValue, setInputValue] = useState();
+  const [inputValue, setInputValue] = useState("");
 
   const [isNavbar, setIsNavbar] = useState(true);
 
+  const [progress, setProgress] = useState(20);
+
   // All states handling functions are declared here
+
+  const updateProgress = (newValue) => {
+    setProgress(newValue);
+  };
 
   const updateInputValue = (newValue) => {
     setInputValue(newValue);
@@ -57,6 +63,8 @@ const MyContextProvider = ({ children }) => {
     isSidebar,
     channelId,
     inputValue,
+    progress,
+    updateProgress,
     updateInputValue,
     updateChannelId,
     updateIsSidebar,

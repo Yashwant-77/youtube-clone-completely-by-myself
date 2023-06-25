@@ -69,3 +69,13 @@
   height: auto !important;
   margin-left: 3px;
 }
+
+.channelAvatar {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.sideChannelAvatar {
+  width: 70px !important;
+  height: 70px !important;
+}

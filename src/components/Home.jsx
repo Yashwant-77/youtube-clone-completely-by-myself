@@ -7,9 +7,9 @@ import { MyContext } from "../context/MyContextProvider";
 const Home = () => {
   const { isSidebar, inputValue, updateInputValue } = useContext(MyContext);
 
-  // useEffect(() => {
-  //   updateInputValue("");
-  // }, []);
+  useEffect(() => {
+    updateInputValue("");
+  }, []);
 
   return (
     <div className="flex w-[100%] h-[91.5vh] relative top-20 bg-black text-white">

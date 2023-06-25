@@ -1,13 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import ContentCard from "./ContentCard";
 import axios from "axios";
+import { MyContext } from "../context/MyContextProvider";
 
 const ContentPage = () => {
   const [myData, setMyData] = useState([]);
 
+  const { updateProgress } = useContext(MyContext);
+
   useEffect(() => {
     const apiKey = "7aea32987cmshb067b64f3da01bfp19a816jsn3abc62a957ad";
-
+    updateProgress(50);
     axios
       .get("https://youtube-search-and-download.p.rapidapi.com/trending", {
         headers: {
@@ -23,10 +26,12 @@ const ContentPage = () => {
         console.log(response.data);
         setMyData(response.data.contents);
         console.log("data is now in mydata");
+        updateProgress(90);
       })
       .catch((error) => {
         // Handle the error
         console.error(error);
+        updateProgress(0);
       });
   }, []);
   return (
@@ -40,6 +45,14 @@ const ContentPage = () => {
           publishedTimeText,
           channelId,
         } = element.video;
+
+        if (index === myData.length - 3) {
+          updateProgress(100);
+        }
+
+        if (index === myData.length - 1) {
+          updateProgress(0);
+        }
 
         return (
           <ContentCard

@@ -11,6 +11,7 @@ import History from "./components/History";
 import YourVideos from "./components/YourVideos";
 import WatchLater from "./components/WatchLater";
 import ChannelInfo from "./components/ChannelInfo";
+import ProgressBar from "./components/ProgressBar";
 
 const App = () => {
   const {
@@ -59,6 +60,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className=" h-[100vh] overflow-hidden bg-black text-white">
+        <ProgressBar />
         {isNavbar ? <Navbar /> : <SearchNav />}
         <Routes>
           <Route exact path="/" element={<Home />} />
