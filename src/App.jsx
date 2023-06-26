@@ -19,6 +19,7 @@ const App = () => {
     updateIsMenuCollapsed,
     isMobile,
     // updateInputValue,
+    updateIsScreenLarge,
     updateIsMobile,
     updateIsSidebar,
     isNavbar,
@@ -28,10 +29,13 @@ const App = () => {
   window.addEventListener("resize", () => {
     if (window.innerWidth <= 1200 && !isMenuCollapsed) {
       updateIsMenuCollapsed(true);
+      updateIsScreenLarge(false);
       // console.log("Menu collapsed");
     }
     if (window.innerWidth >= 1200 && isMenuCollapsed) {
       updateIsMenuCollapsed(false);
+      updateIsScreenLarge(true);
+
       // console.log("Menu opened");
     }
     if (window.innerWidth <= 480 && !isMobile) {

@@ -24,7 +24,15 @@ const MyContextProvider = ({ children }) => {
 
   const [progress, setProgress] = useState(20);
 
+  const [isScreenLarge, setIsScreenLarge] = useState(
+    window.innerWidth > 1200 ? true : false
+  );
+
   // All states handling functions are declared here
+
+  const updateIsScreenLarge = (newValue) => {
+    setIsScreenLarge(newValue);
+  };
 
   const updateProgress = (newValue) => {
     setProgress(newValue);
@@ -64,6 +72,8 @@ const MyContextProvider = ({ children }) => {
     channelId,
     inputValue,
     progress,
+    isScreenLarge,
+    updateIsScreenLarge,
     updateProgress,
     updateInputValue,
     updateChannelId,

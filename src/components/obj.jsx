@@ -1,4 +1,4 @@
-export default obj = {
+const obj = {
   originalQuery: "justin+bieber",
   correctedQuery: "justin+bieber",
   results: 60124253,
@@ -2167,3 +2167,5 @@ export default obj = {
   continuation: null,
   status: true,
 };
+
+export default obj;

@@ -7,7 +7,7 @@ const ProgressBar = () => {
   return (
     <div>
       <div
-        className="progess z-50 "
+        className="progess z-50 delay-500 "
         style={{ width: `${progress}%`, backgroundColor: "red", height: 2 }}
       ></div>
     </div>

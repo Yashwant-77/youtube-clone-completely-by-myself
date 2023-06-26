@@ -9,8 +9,8 @@ const ContentPage = () => {
   const { updateProgress } = useContext(MyContext);
 
   useEffect(() => {
-    const apiKey = "7aea32987cmshb067b64f3da01bfp19a816jsn3abc62a957ad";
-    updateProgress(50);
+    const apiKey = import.meta.env.VITE_API_KEY;
+    updateProgress(70);
     axios
       .get("https://youtube-search-and-download.p.rapidapi.com/trending", {
         headers: {
@@ -26,7 +26,7 @@ const ContentPage = () => {
         console.log(response.data);
         setMyData(response.data.contents);
         console.log("data is now in mydata");
-        updateProgress(90);
+        // updateProgress(90);
       })
       .catch((error) => {
         // Handle the error
