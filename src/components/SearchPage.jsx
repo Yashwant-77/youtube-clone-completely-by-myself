@@ -25,6 +25,9 @@ const SearchPage = () => {
       .then((response) => {
         console.log(response.data);
         setMySearchedData(response.data.items);
+        if (mySearchedData.length() === 0) {
+          setMySearchedData(obj.items);
+        }
         updateProgress(70);
       })
       .catch((error) => {
@@ -35,7 +38,7 @@ const SearchPage = () => {
     <>
       <div className="flex flex-col overflow-y-scroll overscroll-contain ">
         {mySearchedData.length === 0
-          ? updateProgress(0) && setMySearchedData(obj)
+          ? updateProgress(0)
           : mySearchedData.map((element, index) => {
               if (index === mySearchedData.length / 2) {
                 updateProgress(80);
